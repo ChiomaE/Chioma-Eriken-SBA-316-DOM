@@ -2,3 +2,12 @@
   display: flex;
   gap: 3px;
 }
+
+.todoItem {
+  width: 20%;
+}
+
+.todoItem:hover {
+  text-decoration: line-through;
+  cursor: pointer;
+}
