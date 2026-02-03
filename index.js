@@ -1,4 +1,3 @@
-// let todoInput;
 todoInput = document.getElementById("todoInput");
 const regexTest = /\d/;
 let newTodoItem;
@@ -11,6 +10,7 @@ while (userName === "" || userName === null) {
 }
 let mainTitle = document.getElementById("todoTitle");
 let titleDiv = document.createElement("h1");
+titleDiv.style.marginBottom = "1px";
 titleDiv.textContent = `${userName}'s Todo List`;
 console.log(titleDiv);
 mainTitle.appendChild(titleDiv);
@@ -34,6 +34,7 @@ function submitTodo() {
   newTodoItem.textContent = todoInput.value;
   newTodoItem.addEventListener("click", deleteTodo);
   todoList.appendChild(newTodoItem);
+  todoInput.value = "";
 }
 
 function deleteTodo() {
@@ -46,3 +47,16 @@ let submitBtn = document.querySelector("#submitBtn");
 submitBtn.addEventListener("click", submitTodo);
 
 let todoList = document.getElementById("todoList");
+
+let deleteAllBtn = document.getElementById("deleteAllBtn");
+deleteAllBtn.addEventListener("click", () => {
+  if (
+    window.confirm(
+      "Are you sure you want to delete all todo items permanantly?",
+    )
+  ) {
+    while (todoList.firstChild) {
+      todoList.removeChild(todoList.firstChild);
+    }
+  }
+});
